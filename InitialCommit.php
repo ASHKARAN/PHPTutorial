@@ -170,7 +170,6 @@ else echo "please enter the TEST";
 echo "<hr/>";
 //inclution
 //include_once 'second.php';
-//include_once 'second.php';
 
 
 ?>
