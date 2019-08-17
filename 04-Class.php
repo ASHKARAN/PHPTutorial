@@ -1,7 +1,7 @@
 <?php
 
-
-class ClassName {
+include '05-Static.php';
+class ClassName extends  staticClass {
 
 
     private $test = "hello World";
@@ -13,7 +13,7 @@ class ClassName {
     {
 
         $this->language = $language;
-        echo $this->test ;
+        //echo $this->test ;
     }
 
 
@@ -40,9 +40,9 @@ class ClassName {
 }
 
 
-
-$className = new ClassName( );
-
-$className->setTest("  is bad");
-$className->function3();
+//
+//$className = new ClassName( );
+//
+//$className->setTest("  is bad");
+//$className->function3();
 

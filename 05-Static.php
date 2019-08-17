@@ -29,7 +29,7 @@ class staticClass {
 
 
 
-
-$static = new staticClass();
-$static->printVar1();
-echo "\n" .  staticClass::$var4;
+//
+//$static = new staticClass();
+//$static->printVar1();
+//echo "\n" .  staticClass::$var4;
