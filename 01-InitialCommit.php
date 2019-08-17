@@ -1,7 +1,7 @@
 <?php
 
 
-//TODO STATIC , INHERITANCE, interfaces, TRAIT, NameSpace , .HTACCESS, ajax headers, COMPOSER, MYSQL, PDO,  JSON, mvc
+//TODO  INHERITANCE, interfaces, TRAIT, NameSpace , .HTACCESS, ajax headers, COMPOSER, MYSQL, PDO,  JSON, mvc
 //
 //variables
 $a = 1;
