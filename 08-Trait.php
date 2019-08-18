@@ -27,9 +27,9 @@ trait SecondTrait {
         echo "SecondTrait \n";
     }
 }
-
+/*
 $in = new TraitClass();
 $in->TraitFunction();
 $in->FirstTrait();
-$in->SecondTrait();
+$in->SecondTrait();*/
 
