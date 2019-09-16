@@ -1,7 +1,7 @@
 <?php
 
 
-//TODO     COMPOSER, MYSQL, PDO,     .HTACCESS , JSON , ajax headers , mvc
+//TODO     MYSQL, PDO,     .HTACCESS , JSON , ajax headers , mvc
 //
 //variables
 $a = 1;
