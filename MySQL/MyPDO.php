@@ -50,7 +50,7 @@ class MyPDO extends PDO {
         return self::$instance;
     }
 
- 
+
 
     public static function getRowCount($stmt)
     {
@@ -125,8 +125,6 @@ class MyPDO extends PDO {
         } catch (\PDOException $ex) {
             die($ex) ;
         }
-
-
         return $stmt->rowCount();
 
 
