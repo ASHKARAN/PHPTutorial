@@ -81,7 +81,7 @@ class MyPDO extends PDO {
      * @param Integer $fetchStyle
      * @return Array or \PDOException
      */
-    public static  function doSelect($sql, $values = array(), $autoErrorResponder = false , $fetchAll = true, $fetchStyle = PDO::FETCH_ASSOC)
+    public static  function doSelect($sql, $values = array(), $autoErrorResponder = true , $fetchAll = true, $fetchStyle = PDO::FETCH_ASSOC)
     {
 
         $conn = MyPDO::getInstance();
@@ -101,8 +101,11 @@ class MyPDO extends PDO {
             }
             return $result;
         } catch (\PDOException $ex) {
-            die($ex);
+            if($autoErrorResponder) {
+                App::out(Config::$DEBUG_MODE?$ex:"Internal server error", 500);
+            }
         }
+        return null;
     }
 
 
@@ -114,7 +117,7 @@ class MyPDO extends PDO {
      * @param Boolean $autoErroResponder automatically send json response on error
      * @return Ineteger or \PDOException
      */
-    public static  function doQuery($sql, $values = [] ,  $autoErrorResponder = false )
+    public static  function doQuery($sql, $values = [] ,  $autoErrorResponder = true )
     {
         $stmt = self::getInstance()->prepare($sql);
         foreach ($values as $key => $value) {
@@ -123,7 +126,9 @@ class MyPDO extends PDO {
         try {
             $stmt->execute();
         } catch (\PDOException $ex) {
-            die($ex) ;
+            if($autoErrorResponder) {
+                App::out(Config::$DEBUG_MODE?$ex:"Internal server error", 500);
+            }
         }
         return $stmt->rowCount();
 
