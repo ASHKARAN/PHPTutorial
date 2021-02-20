@@ -20,16 +20,23 @@ class App {
     }
 
     public static function hasKeys($json, $keys) {
-
         foreach ($keys as $item) {
             if(!isset($json->$item)) {
-                echo "$item not found";
+               self::out("password not found in request");
                 exit;
             }
         }
-
     }
 
+    public static function out($data, $httpStatusCode = 400) {
+           http_response_code($httpStatusCode);
+            echo json_encode([
+               "success" => $httpStatusCode < 300,
+               "error"   => $httpStatusCode < 300?null:$data,
+               "data"    => $httpStatusCode < 300?$data:null,
+            ]);
+            exit;
+    }
 
 
 }
