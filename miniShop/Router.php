@@ -5,9 +5,6 @@ class Router {
 
     public function __construct($route, $action)
     {
-
-
-
         $json_str = file_get_contents('php://input');
         $json = json_decode($json_str);
         try {

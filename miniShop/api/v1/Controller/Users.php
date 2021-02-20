@@ -1,12 +1,15 @@
 <?php
 namespace miniShop\Controller;
+use miniShop\App;
+use miniShop\MyPDO;
+
 class Users
 {
 
 
     public function Login($json) {
-        echo "v1 Users -> Login";
-        print_r($json);
+
+        App::hasKeys($json, ["email", "password"]);
     }
 }
 

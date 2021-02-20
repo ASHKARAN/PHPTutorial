@@ -19,6 +19,17 @@ class App {
         }
     }
 
+    public static function hasKeys($json, $keys) {
+
+        foreach ($keys as $item) {
+            if(!isset($json->$item)) {
+                echo "$item not found";
+                exit;
+            }
+        }
+
+    }
+
 
 
 }
