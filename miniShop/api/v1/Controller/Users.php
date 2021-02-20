@@ -1,8 +1,9 @@
 <?php
 namespace miniShop\Controller;
 use miniShop\App;
+use miniShop\Config;
 use miniShop\Model\UserModel;
-
+use Ahc\Jwt\JWT;
 class Users
 {
 
@@ -25,7 +26,12 @@ class Users
             if($user == null) {
                 App::out("User not found with this email and password");
             }
-            App::out($user, 200);
+            $jwt = new JWT(Config::$JWT_SECRET);
+            $token = $jwt->encode($user);
+            App::out([
+                "userID" => $user['userID'],
+                "token" => $token
+            ], 200);
     }
 
 

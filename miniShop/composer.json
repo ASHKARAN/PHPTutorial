@@ -1,0 +1,10 @@
+{
+    "name": "PHP/miniShop",
+    "type": "project",
+    "require": {
+        "php": ">=5.5",
+        "adhocore/jwt": "^1.1"
+
+    }
+
+}

@@ -12,6 +12,7 @@ include_once 'Config.php';
 include_once 'Router.php';
 include_once 'MyPDO.php';
 include_once 'App.php';
+include_once 'vendor/autoload.php';
 
 //Display Errors On OutPut
  if(Config::$DEBUG_MODE) {
