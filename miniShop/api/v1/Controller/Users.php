@@ -34,6 +34,14 @@ class Users
             ], 200);
     }
 
+    public function GetInfo($json) {
+
+        $this->userModel->loginByAuthorizationToken() ;
+
+
+
+    }
+
 
 
 }
