@@ -1,5 +1,4 @@
 <?php
-
 namespace miniShop;
 
 //Allow AJAX Request
@@ -14,8 +13,6 @@ include_once 'Router.php';
 include_once 'MyPDO.php';
 include_once 'App.php';
 
-
-
 //Display Errors On OutPut
  if(Config::$DEBUG_MODE) {
     ini_set('display_errors', 1);
@@ -26,15 +23,6 @@ else {
 }
 
 
-
-
-
-
-
-
-
-
-
 if(!isset($_GET["ROUTE" ]) || !isset($_GET[  "ACTION" ])|| !isset($_GET[  "API_VERSION" ]))   {
     echo "not enough data";
 }
@@ -43,17 +31,10 @@ else {
     $route    = $_GET["ROUTE"];
     $action    = $_GET["ACTION"];
 
-
-
     App::loadAllClasses("./api/$version/");
 
-
-
-
+    new Router($route, $action);
 }
-
-
-//echo $route;
 
 
 

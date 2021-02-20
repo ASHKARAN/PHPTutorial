@@ -1,8 +1,12 @@
 <?php
 namespace miniShop\Controller;
-echo 'users included';
 class Users
 {
 
+
+    public function Login($json) {
+        echo "v1 Users -> Login";
+        print_r($json);
+    }
 }
 
