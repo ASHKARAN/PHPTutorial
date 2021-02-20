@@ -6,6 +6,7 @@ class Config {
     public static $DBNAME = "minishop";
     public static $USERNAME = "shop";
     public static $PASSWORD = "shop";
+    public static $PASSWORD_SALT = "flkwuehflwheflywgebfl";
 
 
 
