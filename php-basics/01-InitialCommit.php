@@ -1,8 +1,7 @@
 <?php
 
 
-//TODO     MYSQL, PDO,     .HTACCESS , JSON , ajax headers , mvc
-//
+
 //variables
 $a = 1;
 $b = 2.2;
