@@ -34,4 +34,9 @@ class ProductModel
     public function GetProductByCategoryID($limit) {
         return MyPDO::doSelect("SELECT * FROM products LIMIT 0, $limit", []);
     }
+    public function GetProductByID($productID) {
+        $product =  MyPDO::doSelect("SELECT * FROM products WHERE productID = ? ", [$productID], true, false);
+        $product["categoryModel"] = $this->category->GetCategoryByID($product["categoryID"]);
+        return $product;
+    }
 }

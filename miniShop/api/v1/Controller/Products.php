@@ -36,7 +36,8 @@ class Products
 
 
     public function GetByID($json) {
-
+        App::hasKeys($json, ["productID"]);
+        App::out($this->productModel->GetProductByID($json->productID), 200);
     }
 
     public function GetByCategory($json) {

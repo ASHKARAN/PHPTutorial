@@ -15,4 +15,11 @@ class CategoryModel
     }
 
 
+
+    public function GetCategoryByID($categoryID)
+    {
+        return MyPDO::doSelect("SELECT * FROM categories WHERE categoryID = ?", [$categoryID], true, false);
+    }
+
+
 }
