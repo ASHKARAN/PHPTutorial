@@ -42,23 +42,23 @@ class UserModel
             [$userID], false, false);
     }
 
-    public function loginByAuthorizationToken($autoErrorResponder = true){
+    public function loginByAuthorizationToken($autoErrorResponder = true): bool
+    {
         $headers = getallheaders();
         foreach ($headers as $key => $value) {
             if($key == "Authorization") {
                 $jwt = new JWT(Config::$JWT_SECRET);
                try {
-                  $token =  $jwt->decode($value);
+                   $token =  $jwt->decode($value);
                    self::$userInstance = $this->getUserByID($token['userID']);
                    return true;
                }
                catch (\Exception $e) {  }
             }
-            if($autoErrorResponder) {
-                App::out("Wrong Token");
-            }
-            return  false;
-
         }
+        if($autoErrorResponder) {
+            App::out("Wrong Token");
+        }
+        return  false;
     }
 }
