@@ -41,6 +41,13 @@ class Products
     }
 
     public function GetByCategory($json) {
+        App::hasKeys($json, ["categoryID", "start", "limit"]);
+        $start = intval($json->start);
+        $limit = intval($json->limit);
+
+        if($limit==0) $limit = 10;
+
+        App::out($this->productModel->GetProductByCategoryID($json->categoryID, $start, $limit) , 200);
 
     }
 }

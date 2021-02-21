@@ -26,13 +26,13 @@ class ProductModel
         $categories = $this->category->GetIndexCategories();
         $response = array();
         foreach ($categories as $category) {
-            $category['products'] = $this->GetProductByCategoryID(3);
+            $category['products'] = $this->GetProductByCategoryID($category["categoryID"], 0,3);
             array_push($response , $category);
         }
        return $response;
     }
-    public function GetProductByCategoryID($limit) {
-        return MyPDO::doSelect("SELECT * FROM products LIMIT 0, $limit", []);
+    public function GetProductByCategoryID($categoryID, $start,  $limit) {
+        return MyPDO::doSelect("SELECT * FROM products WHERE categoryID = ?  LIMIT $start, $limit", [$categoryID]);
     }
     public function GetProductByID($productID) {
         $product =  MyPDO::doSelect("SELECT * FROM products WHERE productID = ? ", [$productID], true, false);
