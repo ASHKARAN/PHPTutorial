@@ -54,4 +54,8 @@ class Basket
        App::out($this->basketModel->getBasket( UserModel::$userInstance['userID']) , 200);
     }
 
+    public function Get($json) {
+        app::out($this->basketModel->getBasket(UserModel::$userInstance['userID']), 200);
+    }
+
 }
