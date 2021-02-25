@@ -33,8 +33,6 @@ class Orders
         if(count($basket) === 0 ) {
             App::out("Basket is null");
         }
-
-
         $orderAmount = 0 ;
         foreach ($basket as $item) {
             $product = $this->productModel->GetProductByID($item['productID']);
@@ -54,8 +52,33 @@ class Orders
         $this->basketModel->clearBasket(UserModel::$userInstance['userID']);
 
         App::out($this->orderModel->GetOrderByID($orderID), 200);
+    }
 
+    public function GetOrderByID($json) {
+        App::hasKeys($json , ['orderID']);
+        $order = $this->orderModel->GetOrderByID($json->orderID);
+        if($order == null || $order['userID'] != UserModel::$userInstance['userID']) {
+            App::out("order not found");
+        }
+        App::out($order, 200);
+    }
 
+    public function GetOrderByIDWithProducts($json) {
+        App::hasKeys($json , ['orderID']);
+        $order = $this->orderModel->GetOrderByID($json->orderID);
+        if($order == null || $order['userID'] != UserModel::$userInstance['userID']) {
+            App::out("order not found");
+        }
+
+        $products = $this->orderModel->GetOrderProducts($json->orderID);
+
+        $productArray = [];
+        foreach ($products as $product) {
+            $product['productModel'] = $this->productModel->GetProductByID($product['productID']);
+            $productArray[] = $product;
+        }
+        $order['products'] = $productArray;
+        App::out($order, 200);
     }
 
 
