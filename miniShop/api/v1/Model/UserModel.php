@@ -42,7 +42,7 @@ class UserModel
             [$userID], false, false);
     }
 
-    public function loginByAuthorizationToken($autoErrorResponder = true): bool
+    public function loginByAuthorizationToken($autoErrorResponder = true)
     {
         $headers = getallheaders();
         foreach ($headers as $key => $value) {

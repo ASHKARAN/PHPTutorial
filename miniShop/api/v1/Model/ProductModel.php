@@ -36,7 +36,15 @@ class ProductModel
     }
     public function GetProductByID($productID) {
         $product =  MyPDO::doSelect("SELECT * FROM products WHERE productID = ? ", [$productID], true, false);
+        if($product == null || $product instanceof \Exception) {
+            App::out("Product not found");
+        }
+
         $product["categoryModel"] = $this->category->GetCategoryByID($product["categoryID"]);
         return $product;
+    }
+    public function ProductExists($productID) {
+        $product = MyPDO::doSelect("SELECT productID From products WHERE productID = ? ", [$productID]);
+        return is_array($product) && count($product) == 1 && !($product instanceof  \Exception);
     }
 }
