@@ -31,4 +31,8 @@ class BasketModel
         return MyPDO::doSelect("SELECT * FROM basket WHERE userID = ? " , [$userID]);
     }
 
+    public function removeFromBasket($userID, $productID) {
+        return MyPDO::doSelect("DELETE FROM basket WHERE userID = ? AND productID = ?  " , [$userID, $productID]);
+    }
+
 }

@@ -26,18 +26,14 @@ class Basket
     public function AddToBasket($json) {
        App::hasKeys($json, ["productID", "count"]);
         $count = intval($json->count);
-
         if($count == 0) {
             App::out("Count must be greater than 0");
         }
-
        $product = $this->productModel->GetProductByID($json->productID);
        if($product['quantity'] < $json->count) {
            App::out("Count is greater than quantity");
        }
-
        $productInBasket = $this->basketModel->getProductFromBasket($json->productID, UserModel::$userInstance['userID'] );
-
        if(count($productInBasket)===1) {
            $productInBasket = $productInBasket[0];
            if($count + $productInBasket['productQuantity'] > $product['quantity']) {
@@ -50,10 +46,12 @@ class Basket
            $this->basketModel->addProductToBasket($json->productID, UserModel::$userInstance['userID'], $count);
            App::out($this->basketModel->getBasket( UserModel::$userInstance['userID']) , 200);
        }
-       App::out($productInBasket);
 
-
-
+    }
+    public function RemoveFromBasket($json) {
+       App::hasKeys($json, ["productID"]);
+       $this->basketModel->removeFromBasket(UserModel::$userInstance['userID'] , $json->productID);
+       App::out($this->basketModel->getBasket( UserModel::$userInstance['userID']) , 200);
     }
 
 }
